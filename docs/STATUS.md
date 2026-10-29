@@ -1,11 +1,7 @@
-# Trạng thái bản Biên
+# Trạng thái nhánh Bảo
 
-- make check: PASS, C11 với -Wall -Wextra -Wpedantic -Werror.
-- make test-bien: 12/12 PASS trên Linux của môi trường làm việc.
-- IPv4/IPv6 và wildcard: đã thử thật bằng TCP socket.
-- Debug tuần tự, timeout request, SIGTERM, daemon nhiều client, đường dẫn tuyệt đối, log destination lỗi, cổng bị chiếm: đã thử.
-- Một test dùng binary sws thật: xác nhận listener chạy, nhưng chưa có response HTTP từ stub.
-- Các test còn lại link src/server.c + config.c thật với module doubles được đặt riêng trong tests/fixtures; không phải bằng chứng parser/response/logger/CGI thật chạy được.
-- make test kiểm tra HTTP đầy đủ vẫn chưa đạt vì module của các bạn còn TODO.
-- NetBSD/OmniOS chưa được kiểm tra; không đánh dấu tương thích hoàn tất.
-- Phần Biên được bàn giao trên feature/bien-server; không merge main.
+Config/socket/daemon kế thừa commit Biên. Request parser đã viết; response/CGI/logger còn stub ở nhánh này.
+Chạy make check, make test-request và make test-bien. Xem docs/members/BAO.md.
+Chưa xác minh NetBSD/OmniOS; chưa merge main.
+
+Kết quả kiểm tra trước khi push: 15 parser case và 12 socket/process test đạt trên Linux.

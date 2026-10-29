@@ -19,6 +19,8 @@ check: sws
 	$(PYTHON) tests/check_assets.py
 test-bien: check
 	$(PYTHON) tests/test_bien.py
+test-request: check
+	$(PYTHON) tests/test_request.py
 test: check
 	$(PYTHON) tests/http_acceptance.py
 clean:

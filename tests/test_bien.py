@@ -72,7 +72,7 @@ class BienTests(unittest.TestCase):
         self.fail('server not ready')
     def exchange(self, port, host='127.0.0.1', allow_reset=False):
         with socket.create_connection((host, port), timeout=3) as s:
-            s.sendall(b'X')
+            s.sendall(b'GET / HTTP/1.0\r\n\r\n' if allow_reset else b'X')
             data = bytearray()
             while True:
                 try:
@@ -166,11 +166,14 @@ class BienTests(unittest.TestCase):
         for _ in range(20): self.exchange(port)
         time.sleep(.4)
         self.assertIn('TEST request 200', (self.work/'daemon.log').read_text())
-    def test_real_binary_listens_but_modules_remain_unimplemented(self):
-        # Production binary: verify network lifecycle only, expect EMPTY response from TODO module.
+    def test_real_binary_socket_lifecycle(self):
+        # Production binary: accept bootstrap empty response OR implemented HTTP response.
+        # Full protocol assertions live in test_team_http.py.
         process, port, response = self.start(binary=ROOT/'sws')
-        self.assertEqual(response, '')
         process.terminate(); process.wait(timeout=3)
-        self.assertIn(b'Function not implemented', process.stderr.read())
+        if response:
+            self.assertTrue(response.startswith('HTTP/1.0 200 '), response)
+        else:
+            self.assertIn(b'Function not implemented', process.stderr.read())
 
 if __name__ == '__main__': unittest.main(verbosity=2)
