@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <time.h>
-#define SWS_VERSION "0.1-scaffold"
+#define SWS_VERSION "0.2"
 #define HTTP_MAX_REQUEST 16384
 #define HTTP_MAX_TARGET 4096
 /* Shared contracts: coordinate changes in this file through a PR. */
@@ -32,9 +32,9 @@ int server_run(const server_config *config);
 /* Bao: bounded read to CRLF CRLF; 0 success, -1 with HTTP error in error_status.
  * Must not read forever, accept oversized input, or depend on a single recv(). */
 int request_read(int fd, http_request *request, int *error_status);
-/* Viet An: safe file resolution, MIME via libmagic, directory listing, ~user.
- * Return opened regular-file fd >=0; otherwise -1 and set status.
- * A directory with no index: return -1, status=0; response handles listing.
+/* Viet An: safe file resolution, magic-based MIME, directory listing, ~user.
+ * Return opened regular-file OR directory fd >=0; otherwise -1 and set status.
+ * A directory with no index returns its directory fd with status=0.
  * resolved must be an authorized canonical path. Callers close returned fd. */
 int resource_open(const server_config *config, const char *target,
                   char *resolved, size_t capacity, int *status);

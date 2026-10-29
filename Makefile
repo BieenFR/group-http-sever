@@ -25,3 +25,7 @@ test: check
 	$(PYTHON) tests/http_acceptance.py
 clean:
 	rm -f $(OBJECTS) sws
+
+src/response.o src/cgi.o: include/response_internal.h
+test-response: check
+	$(PYTHON) tests/test_team_http.py --static

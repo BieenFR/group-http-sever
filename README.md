@@ -1,14 +1,14 @@
-# Phần Bảo — HTTP request parser
+# Phần Việt An — tài nguyên và HTTP response
 
-Nhánh feature/bao-request kế thừa code server của Biên (feature/bien-server).
-Đã viết request.c: bounded recv, request line, HTTP/1.0/1.1, GET/HEAD/method khác, headers và HTTP-date. Chưa có response/logger/CGI thật trên nhánh này.
+Nhánh feature/viet-an-response kế thừa server Biên và parser Bảo.
+Đã phục vụ HTML/CSS/ảnh, GET/HEAD/304/errors, directory index, đường dẫn ~user, bảo vệ root/symlink và MIME theo magic patterns qua file(1). CGI/logger còn stub ở nhánh này.
 
 ```bash
-make test-request
-make test-bien
+make test-response
+make test
+./sws -d -i 127.0.0.1 -p 8081 www
 ```
-
-Chưa thể mở trang web từ nhánh Bảo cho tới khi ghép phần response của Việt An.
+Mở http://localhost:8081. Trang nhóm dùng ảnh SVG giữ chỗ, chưa có ảnh thật. Terminal có thể báo logger chưa triển khai cho tới khi ghép phần Lê An.
 
 ## Cài trên Ubuntu
 ```bash

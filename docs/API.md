@@ -16,7 +16,7 @@ Luồng tích hợp do Biên phụ trách:
 - Các hàm chưa làm trả -1 với errno=ENOSYS. Đây không phải server hoạt động.
 - request_read ghi lỗi giao thức vào error_status; truyền request=NULL nếu request không hợp lệ.
 - response_result luôn được khởi tạo kể cả khi gửi lỗi; HEAD giữ Content-Length của GET nhưng không gửi body.
-- status=0 của resource_open chỉ dành cho thư mục đã được xác thực cần listing.
+- resource_open trả fd cho file hoặc thư mục. status=0 + fd>=0 nghĩa là directory đã xác thực cần listing; response dùng fdopendir, không mở lại bằng đường dẫn.
 - Việt An và Lê An phải thống nhất trách nhiệm header CGI: cgi_respond tạo HTTP response hoàn chỉnh từ output CGI.
 - Biên quản lý timeout và xử lý SIGPIPE; response và CGI vẫn phải xử lý write lỗi.
 - Đề xuất lỗi: 400 sai cú pháp; 403 không được truy cập; 404 không có file; 500 lỗi nội bộ; 501 phương thức chưa hỗ trợ. Đối chiếu RFC trước khi chốt.

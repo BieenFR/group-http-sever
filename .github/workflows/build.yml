@@ -10,3 +10,5 @@ jobs:
       - run: make test-bien
       - run: make test-request
       # Enable make test as a required check after milestone 1 is implemented.
+      - run: make test-response
+      - run: make test
