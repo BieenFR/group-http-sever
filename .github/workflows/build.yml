@@ -1,0 +1,10 @@
+name: Build scaffold
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y build-essential python3 libmagic-dev
+      - run: make check
+      # Enable make test as a required check after milestone 1 is implemented.

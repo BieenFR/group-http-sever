@@ -1,0 +1,10 @@
+*.o
+*.d
+submission/
+build/
+sws
+*.log
+*.core
+.vscode/
+.idea/
+__pycache__/
