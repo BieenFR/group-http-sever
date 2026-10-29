@@ -24,5 +24,5 @@ RFC3875: https://www.rfc-editor.org/rfc/rfc3875
 
 Không bắt buộc percent-encoded URI hoặc kiểm tra reserved character theo phần Additional considerations.
 
-make check chỉ kiểm tra build/help/asset. make test hiện có các ca GET, HEAD, ảnh nhị phân, 404; chưa thay thế ma trận này.
+make check chỉ kiểm tra build/help/asset. make test-full chạy kiểm thử parser/logger và HTTP thật. Ma trận trên vẫn cần review trên các nền tảng tham chiếu. MIME dùng file(1) magic patterns, không link libmagic trực tiếp.
 Không đánh dấu hoàn thành khi chỉ make check thành công.

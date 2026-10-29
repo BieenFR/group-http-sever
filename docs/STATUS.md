@@ -1,7 +1,13 @@
-# Trạng thái nhánh Việt An
+# Trạng thái bản ghép
 
-Kế thừa Biên + Bảo; HTTP file tĩnh đã hoạt động. CGI/logger còn stub.
-make test-response kiểm tra server thật, không dùng doubles.
-MIME phụ thuộc file(1) có --mime-type. Chưa kiểm tra NetBSD/OmniOS; chưa merge main.
+Các module đã triển khai, có kiểm thử server thật. Main chưa merge.
+- Build C11 -Wall -Wextra -Wpedantic -Werror trên Linux.
+- Parser: 15 case với socketpair và request.c thật.
+- Logger: 5 nhóm kiểm tra, concurrent append thực tế bằng fork.
+- HTTP: tests/test_team_http.py (server thật), thêm smoke test tests/http_acceptance.py.
+- Socket/daemon: 12 case tests/test_bien.py; doubles được ghi rõ cho phần ghép module.
+- Chưa thử NetBSD/OmniOS; không tuyên bố đã đạt toàn bộ đề.
+- Ảnh thành viên còn là SVG giữ chỗ. ~user không tồn tại có kiểm tra; ~user home thật chưa kiểm tra.
+- Git history giữ nguyên các commit trước; code được chuẩn bị theo yêu cầu, không dựng commit giả cho thành viên.
 
-Kết quả kiểm tra trước khi push: 19 HTTP static test và smoke GET/HEAD/ảnh/404/HTTP1.1 đạt trên Linux.
+Kết quả kiểm tra trước khi push: 31 HTTP integration test, 15 parser case, 5 nhóm logger check và 12 socket/process test đạt trên Linux.

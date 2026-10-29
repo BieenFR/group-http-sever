@@ -1,5 +1,5 @@
 # Bảng công việc của nhóm
-B01–B04 đã triển khai và kiểm tra Linux trong bản Biên, đang chờ review. B05 còn kiểm tra nền tảng tham chiếu; B06 còn phối hợp với CGI. Các phần khác vẫn TODO. Giữ checklist chưa đánh dấu cho tới khi review.
+B01–B04 đã triển khai và kiểm tra Linux trong bản Biên, đang chờ review. B05 còn kiểm tra nền tảng tham chiếu; B06 còn phối hợp với CGI. Các phần Bảo/Việt An/Lê An đã được chuẩn bị trong các nhánh tương ứng; checklist chỉ được đánh dấu sau khi thành viên review thật. Giữ checklist chưa đánh dấu cho tới khi review.
 
 ## Biên — feature/bien-server
 - [ ] B01: config.c: getopt cho -d -h -c -i -l -p, mặc định port 8080; validate port 1..65535 và document root.

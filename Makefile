@@ -29,3 +29,11 @@ clean:
 src/response.o src/cgi.o: include/response_internal.h
 test-response: check
 	$(PYTHON) tests/test_team_http.py --static
+
+test-logger: check
+	$(PYTHON) tests/test_logger.py
+test-full: check
+	$(PYTHON) tests/test_request.py
+	$(PYTHON) tests/test_logger.py
+	$(PYTHON) tests/http_acceptance.py
+	$(PYTHON) tests/test_team_http.py
