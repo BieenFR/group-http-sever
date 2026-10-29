@@ -1,7 +1,15 @@
 # Group HTTP Server — Biên, Bảo, Việt An, Lê An
 Bộ khung phân công để nhóm tự lập trình sws HTTP/1.0 bằng C/socket. Phát triển trên Ubuntu, nhưng phải biên dịch/chạy trên NetBSD 11.0, Linux và OmniOS theo đề. Chấp nhận cả request HTTP/1.1.
 
-**Trạng thái: scaffold, CHƯA có HTTP server hoạt động.** main, header, Makefile và trang nhóm đã có; các hàm TODO trả lỗi ENOSYS. Không dùng gói này như bài nộp hoàn chỉnh.
+**Trạng thái: đã làm phần Biên (config/socket/daemon); chưa hoàn thành HTTP server.**
+Server mở cổng thật và nhận kết nối, nhưng request/response/logger/CGI của các bạn còn stub ENOSYS nên chưa trả trang web. Xem docs/BIEN_REPORT.md.
+
+Kiểm tra phần Biên:
+```bash
+make test-bien
+```
+12 test kiểm tra socket/process/config, dùng module doubles riêng trong tests/fixtures, không tuyên bố đã kiểm thử HTTP hoàn chỉnh.
+
 
 ## Bắt đầu
 1. Clone repo https://github.com/BieenFR/group-http-sever.git và chọn nhánh tương ứng trong docs/GIT_GUIDE.md.
@@ -20,7 +28,7 @@ make check
 ```bash
 make test
 ```
-`make test` sẽ FAIL ở bộ khung hiện tại vì socket/parser/response chưa được viết. Khi hoàn thành mốc 1, bài kiểm tra này phải pass trên binary sws thật.
+`make test` vẫn FAIL vì parser/response chưa được viết; socket đã nhận kết nối. Khi hoàn thành mốc 1, bài kiểm tra này phải pass trên binary sws thật.
 
 ## Lệnh chạy sau khi triển khai
 ```bash
