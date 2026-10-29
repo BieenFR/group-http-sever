@@ -17,7 +17,23 @@ $(OBJECTS): include/http.h
 check: sws
 	./sws -h
 	$(PYTHON) tests/check_assets.py
+test-bien: check
+	$(PYTHON) tests/test_bien.py
+test-request: check
+	$(PYTHON) tests/test_request.py
 test: check
 	$(PYTHON) tests/http_acceptance.py
 clean:
 	rm -f $(OBJECTS) sws
+
+src/response.o src/cgi.o: include/response_internal.h
+test-response: check
+	$(PYTHON) tests/test_team_http.py --static
+
+test-logger: check
+	$(PYTHON) tests/test_logger.py
+test-full: check
+	$(PYTHON) tests/test_request.py
+	$(PYTHON) tests/test_logger.py
+	$(PYTHON) tests/http_acceptance.py
+	$(PYTHON) tests/test_team_http.py

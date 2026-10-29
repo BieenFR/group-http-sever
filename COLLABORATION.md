@@ -1,6 +1,6 @@
 # Nhật ký phối hợp — điền theo công việc thực tế
 
-Đây là mẫu trống, chưa xác nhận ai hoàn thành code.
+Code đã được chuẩn bị với trợ giúp AI theo phần được giao. Bảng này ghi đóng góp thực tế sau khi mỗi thành viên đọc, chạy thử, sửa và review; không suy ra tác giả thật chỉ từ tên nhánh.
 
 | Thành viên | Username Git | Nhiệm vụ dự kiến | Thực tế hoàn thành | Commit/PR | Review/hỗ trợ |
 |---|---|---|---|---|---|
